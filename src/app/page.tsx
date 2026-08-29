@@ -7,7 +7,7 @@ import { X, Minus, Square, Copy, Bot, Youtube, Github, Terminal, Search, Send } 
 
 const APPS = [
   { id: 'codespace', title: 'GitHub Codespaces', icon: 'Terminal', url: 'https://github.com/codespaces' },
-  { id: 'youtube', title: 'YouTube Stream', icon: 'Youtube', url: 'https://www.youtube-nocookie.com/embed/jfKfPfyJRdk' },
+  { id: 'youtube', title: 'YouTube Player', icon: 'Youtube', url: 'https://invidious.privacydev.net' },
   { id: 'github', title: 'GitHub Dashboard', icon: 'Github', url: 'https://github.com' },
   { id: 'google', title: 'Search Engine', icon: 'Search', url: 'https://www.bing.com' },
   { id: 'ai-assistant', title: 'AI Assistant', icon: 'Bot' },
@@ -37,14 +37,14 @@ export default function OS() {
     setTimeout(() => {
       setMessages((prev) => [
         ...prev,
-        { role: 'assistant', text: `Aapne pucha: "${userQuery}". Main jald hi full Gemini AI execution engine se connect hone wala hoon!` }
+        { role: 'assistant', text: `Aapne pucha: "${userQuery}". Main aapke Web OS ko manage kar sakta hoon.` }
       ]);
     }, 600);
   };
 
   return (
     <main className="relative w-screen h-screen bg-slate-950 text-white overflow-hidden select-none">
-      {/* Visual Background */}
+      {/* Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f293715_1px,transparent_1px),linear-gradient(to_bottom,#1f293715_1px,transparent_1px)] bg-[size:3rem_3rem]" />
 
       {/* Dynamic Windows */}
@@ -86,7 +86,13 @@ export default function OS() {
             {/* Window Content */}
             <div className="flex-1 bg-black overflow-hidden relative">
               {win.url ? (
-                <iframe src={win.url} className="w-full h-full border-0 bg-white" title={win.title} allow="autoplay; encrypted-media; picture-in-picture" />
+                <iframe 
+                  src={win.url} 
+                  className="w-full h-full border-0 bg-white" 
+                  title={win.title} 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
               ) : (
                 <div className="flex flex-col h-full bg-gray-950 p-4 text-gray-200">
                   <div className="flex items-center gap-2 mb-3 pb-2 border-b border-gray-800">
